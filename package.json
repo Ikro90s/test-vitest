@@ -1,0 +1,12 @@
+{
+  "name": "inversify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "ts-node src/index.ts",
+    "start:prod": "NODE_ENV=production ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true
+}
