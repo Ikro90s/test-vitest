@@ -8,7 +8,6 @@ import { ReportController } from "./http/ReportController";
 const app = express();
 const port = process.env.APP_PORT || 3000;
 
-// Rota conforme especificado
 app.get("/relatorio/:n", ReportController.handle);
 
 app.listen(port, () => {
