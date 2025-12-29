@@ -12,14 +12,12 @@ export class ReportService implements IReportService {
     ) {}
 
     async generateAndSend(email: string, n: number): Promise<void> {
-        // Validação
         if (n <= 0 || n > 10) {
             throw new InvalidReportSizeError();
         }
 
         this.logger.info(`Iniciando geração de relatório com ${n} registros.`);
 
-        // Geração de dados fictícios
         const data = Array.from({ length: n }, () => ({
             nome: faker.person.fullName(),
             cidade: faker.location.city(),
@@ -28,7 +26,6 @@ export class ReportService implements IReportService {
         const reportBody = `Relatório de Dados Fictícios:\n\n` + 
             data.map(d => `- Nome: ${d.nome}, Cidade: ${d.cidade}`).join("\n");
 
-        // Enviar e-mail
         await this.mailer.send(email, "Seu Relatório Acadêmico", reportBody);
 
         this.logger.info(`Relatório enviado com sucesso para ${email}.`);
