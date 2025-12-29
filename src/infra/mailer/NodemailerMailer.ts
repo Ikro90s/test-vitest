@@ -12,7 +12,6 @@ export class NodemailerMailer implements IMailer {
         const isProd = process.env.APP_ENV === "prod";
 
         if (isProd) {
-            // Prod: SMTP Real
             this.transporter = nodemailer.createTransport({
                 host: process.env.SMTP_HOST,
                 port: Number(process.env.SMTP_PORT),
@@ -22,7 +21,6 @@ export class NodemailerMailer implements IMailer {
                 },
             });
         } else {
-            // Dev: Ethereal (Simulado)
             const testAccount = await nodemailer.createTestAccount();
             this.transporter = nodemailer.createTransport({
                 host: "smtp.ethereal.email",
