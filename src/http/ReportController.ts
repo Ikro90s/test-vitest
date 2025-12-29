@@ -14,7 +14,6 @@ export class ReportController {
         }
 
         try {
-            // Resolvendo o serviço através do container (IoC)
             const reportService = container.get<IReportService>(TYPES.ReportService);
             
             await reportService.generateAndSend(email, n);
